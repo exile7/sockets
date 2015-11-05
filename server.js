@@ -12,8 +12,8 @@ io.on('connection', function (socket) {
 	socket.on('message', function(message) {
 		console.log('Message received: ' + message.text);
 
-		// send it to everyone except the sender
-		socket.broadcast.emit('message', message);
+		// socket.broadcast sends it to everyone except the sender, io.emit sends to all
+		io.emit('message', message);
 	});
 
  	// message is whatever you want to call ur event and pass back object so u can store more stuff
